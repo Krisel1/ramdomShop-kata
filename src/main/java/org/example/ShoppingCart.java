@@ -54,14 +54,14 @@ public class ShoppingCart {
                 }
                 case "green" -> {
                     if (product.getAge() != null && product.getAge() >= 20) {
-                        yield BigDecimal.valueOf(20).multiply(BigDecimal.valueOf(1.2));
+                        yield BigDecimal.valueOf(4.40).multiply(BigDecimal.valueOf(1.20));
                     } else {
                         yield BigDecimal.valueOf(4.40);
                     }
                 }
                 case "black" -> {
                     if (product.getAge() != null && product.getAge() >= 20) {
-                        yield BigDecimal.valueOf(20).multiply(BigDecimal.valueOf(1.2));
+                        yield BigDecimal.valueOf(6.80).multiply(BigDecimal.valueOf(1.20));
                     } else {
                         yield BigDecimal.valueOf(6.80);
                     }
