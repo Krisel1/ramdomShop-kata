@@ -13,7 +13,7 @@ public class ShoppingCart {
     }
 
     public Double getTotalPrice() {
-        return  products.stream()
+        return products.stream()
                 .map(this::calculatePrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .doubleValue();
@@ -21,10 +21,26 @@ public class ShoppingCart {
 
     private BigDecimal calculatePrice(Product product) {
         if (product.getNumberOfLegs() != null) {
+            if (product.getName() == "Spiders") {
+                double basePrice = 1.2 * product.getNumberOfLegs();
+                double extra = 0.0;
+
+                if (product.getColor() == "Red") {
+                    extra = 2.0;
+                } else if (product.getColor() == "Gold") {
+                    extra = 3.0;
+                }
+                if (product.isStinky()) {
+                    return BigDecimal.valueOf((basePrice + extra) / 2.0);
+                } else {
+                    return BigDecimal.valueOf(basePrice + extra);
+                }
+            }
+
             return BigDecimal.valueOf(4.2 * product.getNumberOfLegs());
         } else if (product.getAge() != null) {
             if (product.isStinky()) {
-                return BigDecimal.valueOf(10.0* product.getAge());
+                return BigDecimal.valueOf(10.0 * product.getAge());
             } else {
                 return BigDecimal.valueOf(20.0 * product.getAge());
             }
@@ -33,6 +49,7 @@ public class ShoppingCart {
                 case "blue" -> product.getBasePrice().add(BigDecimal.valueOf(0.1));
                 case "gold" -> product.getBasePrice().multiply(BigDecimal.valueOf(100.0));
                 default -> product.getBasePrice();
+
             };
         } else if (product.getName().equals("Magic: The Gathering - Black Lotus")) {
             return BigDecimal.valueOf(40000.0);
@@ -44,9 +61,7 @@ public class ShoppingCart {
                 case "black" -> BigDecimal.valueOf(6.80);
                 default -> BigDecimal.valueOf(2.0);
             };
-        } else {
-            return product.getSellPrice();
         }
+        return product.getSellPrice();
     }
-
 }
