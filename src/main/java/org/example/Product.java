@@ -22,30 +22,37 @@ public class Product {
     }
 
     public Integer getNumberOfLegs() {
+
         return numberOfLegs;
     }
 
     public Integer getAge() {
+
         return age;
     }
 
     public boolean isStinky() {
+
         return isStinky;
     }
 
     public String getColor() {
+
         return color;
     }
 
     public BigDecimal getBasePrice() {
+
         return basePrice;
     }
 
     public String getName() {
+
         return name;
     }
 
     public BigDecimal getSellPrice() {
+
         return sellPrice;
     }
 }

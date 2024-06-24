@@ -38,7 +38,7 @@ public class ShoppingCart {
             }
 
             return BigDecimal.valueOf(4.2 * product.getNumberOfLegs());
-        } else if (product.getAge() != null) {
+        } else if (product.getAge() != null && product.getColor() == null) {
             if (product.isStinky()) {
                 return BigDecimal.valueOf(10.0 * product.getAge());
             } else {
@@ -55,10 +55,34 @@ public class ShoppingCart {
             return BigDecimal.valueOf(40000.0);
         } else if (product.getName().startsWith("Magic: The Gathering")) {
             return switch (product.getColor()) {
-                case "blue" -> BigDecimal.valueOf(5.0);
-                case "red" -> BigDecimal.valueOf(3.5);
-                case "green" -> BigDecimal.valueOf(4.40);
-                case "black" -> BigDecimal.valueOf(6.80);
+                case "blue" -> {
+                    if (product.getAge() != null && product.getAge() >= 10) {
+                        yield BigDecimal.valueOf(5.0).divide(BigDecimal.valueOf(2));
+                    } else {
+                        yield BigDecimal.valueOf(5.0);
+                    }
+                }
+                case "red" -> {
+                    if (product.getAge() != null && product.getAge() >= 10) {
+                        yield BigDecimal.valueOf(3.5).divide(BigDecimal.valueOf(2));
+                    } else {
+                        yield BigDecimal.valueOf(3.5);
+                    }
+                }
+                case "green" -> {
+                    if (product.getAge() != null && product.getAge() >= 20) {
+                        yield BigDecimal.valueOf(4.40).multiply(BigDecimal.valueOf(1.20));
+                    } else {
+                        yield BigDecimal.valueOf(4.40);
+                    }
+                }
+                case "black" -> {
+                    if (product.getAge() != null && product.getAge() >= 20) {
+                        yield BigDecimal.valueOf(6.80).multiply(BigDecimal.valueOf(1.20));
+                    } else {
+                        yield BigDecimal.valueOf(6.80);
+                    }
+                }
                 default -> BigDecimal.valueOf(2.0);
             };
         }
