@@ -1,0 +1,1 @@
+This project tries to refactor the code with its corresponding tests, although the code worked, it did not have the standards of a clean code, the first thing that was done was to add the missing tests, seeing that they passed, we separated the code by classes and the tests, Once the tests have passed, it is uploaded to the repository.
