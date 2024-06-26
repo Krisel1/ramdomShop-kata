@@ -12,18 +12,17 @@ public class ShoppingCart {
         products.add(product);
     }
 
-//    public Double getTotalPrice() {
-//        return products.stream()
-//                .map(this::calculatePrice)
-//                .reduce(BigDecimal.ZERO, BigDecimal::add)
-//                .doubleValue();
-//    }
+ //*   public Double getTotalPrice() {
+//      return products.stream()
+//               .map(this::calculatePrice)
+//               .reduce(BigDecimal.ZERO, BigDecimal::add)
+//              .doubleValue();
+
+
+//      public BigDecimal calculatePrice(Product product){
+//      }
+//  }
 }
-
-
-
-
-
 
 
 
